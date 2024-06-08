@@ -39,11 +39,11 @@ KC_LCTL,         KC_RALT,       KC_LALT,       KC_LGUI,       MO(2),         LAL
 
 // Keyboard settings
 [4] = LAYOUT_ortho_5x12(
-  KC_PWR,   DF(1),    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,     KC_TRNS,  KC_TRNS,  DF(0),    KC_TRNS,
-  KC_TRNS,  QK_BOOT,  RGB_TOG,  RGB_MOD,   RGB_HUI,  RGB_VAI,  RGB_SAI,  KC_TRNS,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-  KC_TRNS,  KC_TRNS,  KC_TRNS,  RGB_RMOD,  RGB_HUD,  RGB_VAD,  RGB_SAD,  KC_TRNS,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RGB_M_P,  RGB_M_B,  KC_TRNS,  QK_MACRO_0,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+  KC_PWR,   DF(1),    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,     KC_TRNS,  KC_TRNS,  DF(0),    KC_TRNS,
+  KC_TRNS,  QK_BOOT,  RGB_TOG,  RGB_MOD,   RGB_HUI,  RGB_VAI,  RGB_SAI,    KC_TRNS,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  RGB_RMOD,  RGB_HUD,  RGB_VAD,  RGB_SAD,    KC_TRNS,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RGB_M_P,  RGB_M_B,  QK_MACRO_1, QK_MACRO_0,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
 ),
 
 // Unused yet.
@@ -68,6 +68,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         switch (keycode) {
             case QK_MACRO_0:
                 SEND_STRING("Good morning! :wave::sunrise_over_mountains::coffee:");
+                return false;
+            case QK_MACRO_1:
+                SEND_STRING("Arnaud Berthomier");
                 return false;
         }
     }
