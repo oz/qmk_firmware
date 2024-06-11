@@ -42,6 +42,11 @@ enum {
 	DOUBLE_HOLD = 4
 };
 
+#ifdef AUDIO_ENABLE
+static float caps_word_on_song[][2] = SONG(CAPS_LOCK_ON_SOUND);
+static float caps_word_off_song[][2] = SONG(CAPS_LOCK_OFF_SOUND);
+#endif
+
 int cur_dance(tap_dance_state_t *state) {
 	if ((state->count == 1) && (!state->pressed)) return SINGLE_TAP;
 	else if ((state->count == 1) && (state->pressed)) return SINGLE_HOLD;
@@ -66,6 +71,16 @@ void dance_cw_finished(tap_dance_state_t *state, void *user_data) {
 		return;
 	}
 }
+
+#ifdef AUDIO_ENABLE
+void caps_word_set_user(bool active) {
+	if (active) {
+		PLAY_SONG(caps_word_on_song);
+	} else {
+		PLAY_SONG(caps_word_off_song);
+	}
+}
+#endif
 
 // Clear the tap-dance floor.
 void dance_cw_reset(tap_dance_state_t *state, void *user_data) {
