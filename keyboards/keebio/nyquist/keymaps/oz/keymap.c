@@ -1,13 +1,64 @@
 #include QMK_KEYBOARD_H
 
+// Some Tap Dance states
+enum {
+	SINGLE_TAP = 1,
+	SINGLE_HOLD = 2,
+	DOUBLE_TAP = 3,
+	DOUBLE_HOLD = 4
+};
+
+int cur_dance(tap_dance_state_t *state) {
+	if ((state->count == 1) && (!state->pressed)) return SINGLE_TAP;
+	else if ((state->count == 1) && (state->pressed)) return SINGLE_HOLD;
+	else if ((state->count == 2) && (!state->pressed)) return DOUBLE_TAP;
+	else if ((state->count == 2) && (state->pressed)) return DOUBLE_HOLD;
+
+	// magic number. At some point this method could expand to work for more presses
+	else return 5;
+}
+
+// Tap-dance is over.
+void dance_cw_finished(tap_dance_state_t *state, void *user_data) {
+	int dance = cur_dance(state);
+
+	if (dance == SINGLE_TAP) {
+		register_code(KC_GRV);
+		reset_tap_dance(state);
+		return;
+	}
+	if (dance == DOUBLE_TAP) {
+		caps_word_on();
+		return;
+	}
+}
+
+// Clear the tap-dance floor.
+void dance_cw_reset(tap_dance_state_t *state, void *user_data) {
+	if (state->count == 1) {
+		unregister_code(KC_GRV);
+	}
+}
+
+// Tilde or Caps-word tap-dance.
+enum {
+	TD_TILDE_CW,
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+	// Tap once for ` (backtick), twice for Caps-word.
+	[TD_TILDE_CW] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_cw_finished, dance_cw_reset),
+};
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // QWERTY layer
 [0] = LAYOUT_ortho_5x12(
-KC_GRV,          KC_1,          KC_2,          KC_3,          KC_4,          KC_5,            KC_6,            KC_7,          KC_8,          KC_9,          KC_0,             KC_BSLS,
-KC_TAB,          KC_Q,          KC_W,          KC_E,          KC_R,          KC_T,            KC_Y,            KC_U,          KC_I,          KC_O,          KC_P,             KC_BSPC,
-LCTL_T(KC_ESC),  LGUI_T(KC_A),  LALT_T(KC_S),  LCTL_T(KC_D),  LSFT_T(KC_F),  KC_G,            KC_H,            LSFT_T(KC_J),  LCTL_T(KC_K),  RALT_T(KC_L),  RGUI_T(KC_SCLN),  KC_QUOT,
-KC_LSFT,         KC_Z,          KC_X,          KC_C,          KC_V,          KC_B,            KC_N,            KC_M,          KC_COMM,       KC_DOT,        KC_SLSH,          SC_SENT,
-KC_LCTL,         KC_RALT,       KC_LALT,       KC_LGUI,       MO(2),         LALT_T(KC_SPC),  RGUI_T(KC_SPC),  MO(3),         KC_LEFT,       KC_DOWN,       KC_UP,            KC_RGHT
+TD(TD_TILDE_CW),  KC_1,          KC_2,          KC_3,          KC_4,          KC_5,            KC_6,            KC_7,          KC_8,          KC_9,          KC_0,             KC_BSLS,
+KC_TAB,           KC_Q,          KC_W,          KC_E,          KC_R,          KC_T,            KC_Y,            KC_U,          KC_I,          KC_O,          KC_P,             KC_BSPC,
+LCTL_T(KC_ESC),   LGUI_T(KC_A),  LALT_T(KC_S),  LCTL_T(KC_D),  LSFT_T(KC_F),  KC_G,            KC_H,            LSFT_T(KC_J),  LCTL_T(KC_K),  RALT_T(KC_L),  RGUI_T(KC_SCLN),  KC_QUOT,
+KC_LSFT,          KC_Z,          KC_X,          KC_C,          KC_V,          KC_B,            KC_N,            KC_M,          KC_COMM,       KC_DOT,        KC_SLSH,          SC_SENT,
+KC_LCTL,          KC_RALT,       KC_LALT,       KC_LGUI,       MO(2),         LALT_T(KC_SPC),  RGUI_T(KC_SPC),  MO(3),         KC_LEFT,       KC_DOWN,       KC_UP,            KC_RGHT
 ),
 
 // Colemak
