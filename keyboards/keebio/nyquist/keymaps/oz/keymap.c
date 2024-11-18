@@ -54,20 +54,20 @@ tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // QWERTY layer
 [0] = LAYOUT_ortho_5x12(
-TD(TD_TILDE_CW),  KC_1,          KC_2,          KC_3,          KC_4,          KC_5,            KC_6,            KC_7,          KC_8,          KC_9,          KC_0,             KC_BSLS,
-KC_TAB,           KC_Q,          KC_W,          KC_E,          KC_R,          KC_T,            KC_Y,            KC_U,          KC_I,          KC_O,          KC_P,             KC_BSPC,
-LCTL_T(KC_ESC),   LGUI_T(KC_A),  LALT_T(KC_S),  LCTL_T(KC_D),  LSFT_T(KC_F),  KC_G,            KC_H,            LSFT_T(KC_J),  LCTL_T(KC_K),  RALT_T(KC_L),  RGUI_T(KC_SCLN),  KC_QUOT,
-KC_LSFT,          KC_Z,          KC_X,          KC_C,          KC_V,          KC_B,            KC_N,            KC_M,          KC_COMM,       KC_DOT,        KC_SLSH,          SC_SENT,
-KC_LCTL,          KC_RALT,       KC_LALT,       KC_LGUI,       MO(2),         LALT_T(KC_SPC),  RGUI_T(KC_SPC),  MO(3),         KC_LEFT,       KC_DOWN,       KC_UP,            KC_RGHT
+  TD(TD_TILDE_CW),  KC_1,          KC_2,          KC_3,          KC_4,          KC_5,            KC_6,            KC_7,          KC_8,          KC_9,            KC_0,             KC_BSLS,
+  KC_TAB,           KC_Q,          KC_W,          KC_E,          KC_R,          KC_T,            KC_Y,            KC_U,          KC_I,          KC_O,            KC_P,             KC_BSPC,
+  LCTL_T(KC_ESC),   LGUI_T(KC_A),  LALT_T(KC_S),  LCTL_T(KC_D),  LSFT_T(KC_F),  KC_G,            KC_H,            RSFT_T(KC_J),  LCTL_T(KC_K),  LALT_T(KC_L),    RGUI_T(KC_SCLN),  KC_QUOT,
+  KC_LSFT,          KC_Z,          KC_X,          KC_C,          KC_V,          KC_B,            KC_N,            KC_M,          KC_COMM,       RALT_T(KC_DOT),  KC_SLSH,          SC_SENT,
+  KC_LCTL,          KC_RALT,       KC_LALT,       KC_LGUI,       MO(2),         LALT_T(KC_SPC),  RGUI_T(KC_SPC),  MO(3),         KC_LEFT,       KC_DOWN,         KC_UP,            KC_RGHT
 ),
 
 // Colemak
 [1] = LAYOUT_ortho_5x12(
-  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-  KC_TRNS,  KC_Q,     KC_W,     KC_F,     KC_P,     KC_B,     KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,  KC_TRNS,
-  KC_TRNS,  KC_A,     KC_R,     KC_S,     KC_T,     KC_G,     KC_M,     KC_N,     KC_E,     KC_I,     KC_O,     KC_TRNS,
-  KC_TRNS,  KC_Z,     KC_X,     KC_C,     KC_D,     KC_V,     KC_K,     KC_H,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  MO(2),    KC_TRNS,  KC_TRNS,  MO(3),    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,
+  KC_TRNS,  KC_Q,          KC_W,          KC_F,          KC_P,           KC_B,     KC_J,     KC_L,          KC_U,          KC_Y,          KC_SCLN,       KC_TRNS,
+  KC_TRNS,  LGUI_T(KC_A),  LALT_T(KC_R),  LCTL_T(KC_S),  LSFT_T(KC_T),   KC_G,     KC_M,     RSFT_T(KC_N),  LCTL_T(KC_E),  LALT_T(KC_I),  RGUI_T(KC_O),  KC_TRNS,
+  KC_TRNS,  KC_Z,          KC_X,          KC_C,          KC_D,           KC_V,     KC_K,     KC_H,          KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,
+  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,       MO(2),          KC_TRNS,  KC_TRNS,  MO(3),         KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS
 ),
 
 // Symbols
@@ -103,7 +103,7 @@ KC_LCTL,          KC_RALT,       KC_LALT,       KC_LGUI,       MO(2),         LA
   KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
   KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
   KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-  KC_NO,  KC_NO,  KC_NO,  KC_NO,  MO(2),  KC_NO,  KC_NO,  MO(3),  KC_NO,  KC_NO,  KC_NO,  KC_NO
+  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO
 )
 
 };
