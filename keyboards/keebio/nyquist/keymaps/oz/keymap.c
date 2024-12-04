@@ -99,11 +99,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Mouse layer.
 [5] = LAYOUT_ortho_5x12(
-  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,     KC_NO,    KC_NO,  KC_NO,    KC_NO,  KC_NO,
-  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,     KC_NO,    KC_NO,  KC_NO,    KC_NO,  KC_NO,
-  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  MS_LEFT,   MS_DOWN,  MS_UP,  MS_RGHT,  KC_NO,  KC_NO,
-  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,     KC_NO,    KC_NO,  KC_NO,    KC_NO,  KC_NO,
-  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  MS_BTN1,   MS_BTN2,  KC_NO,  KC_NO,    KC_NO,  KC_NO
+  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,     KC_NO,    KC_NO,   KC_NO,    KC_NO,  KC_NO,
+  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,     KC_NO,    KC_NO,   KC_NO,    KC_NO,  KC_NO,
+  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  MS_LEFT,   MS_DOWN,  MS_UP,   MS_RGHT,  KC_NO,  KC_NO,
+  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  MS_WHLR,   MS_WHLU,  MS_WHLD, MS_WHLL,  KC_NO,  KC_NO,
+  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  MS_BTN1,   MS_BTN2,  KC_NO,   KC_NO,    KC_NO,  KC_NO
 )
 
 };
